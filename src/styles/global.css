@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+/* Colores de marca (verde petróleo + dorado): cambia estos valores por cliente (verifica contraste AA). */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-brand-50: #effaf7;
+  --color-brand-100: #d3f0e8;
+  --color-brand-200: #a6dfd0;
+  --color-brand-600: #0f766e; /* blanco sobre este: 5.5:1 */
+  --color-brand-700: #0f5c56; /* blanco sobre este: 7.6:1 */
+  --color-brand-900: #0d332f;
+  --color-accent-50: #fdf8ec;
+  --color-accent-500: #c08a1e; /* solo decorativo (estrellas, detalles) */
+  --color-accent-800: #7a5410; /* texto dorado sobre claro: 6.6:1 */
+  --color-whatsapp: #15803d;
+  --color-whatsapp-hover: #166534;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-white font-sans text-slate-800 antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+}
+
+@utility btn {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-semibold transition-colors;
+}
+
+@utility section-title {
+  @apply text-3xl font-extrabold tracking-tight text-brand-900 sm:text-4xl;
+}

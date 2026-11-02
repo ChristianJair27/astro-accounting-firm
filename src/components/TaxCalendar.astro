@@ -1,0 +1,37 @@
+---
+import { site } from '../config/site';
+import Icon from './Icon.astro';
+---
+
+<section id="calendario" class="bg-brand-50 py-16 md:py-24" data-section="calendar">
+  <div class="container-page">
+    <h2 class="section-title">Calendario de obligaciones fiscales</h2>
+    <p class="mt-3 max-w-2xl text-slate-600">
+      Lo que normalmente hay que cumplir y cada cuándo. Nosotros llevamos las fechas para que tú no tengas que recordarlas.
+    </p>
+    <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        site.obligations.map((o) => (
+          <li class="flex flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-brand-100">
+            <h3 class="flex items-center gap-2 text-sm font-bold tracking-wide text-accent-800 uppercase">
+              <Icon name="calendar" class="size-5" /> {o.period}
+            </h3>
+            <p class="mt-2 text-sm text-slate-600">{o.when}</p>
+            <ul class="mt-4 space-y-2 text-slate-800">
+              {o.items.map((i) => (
+                <li class="flex gap-2">
+                  <Icon name="check" class="mt-0.5 size-5 shrink-0 text-brand-600" />
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6 flex max-w-3xl gap-3 rounded-xl bg-white p-4 text-sm text-slate-700 ring-1 ring-brand-100" data-testid="calendar-note">
+      <Icon name="shield" class="size-5 shrink-0 text-brand-600" />
+      <span><strong class="font-semibold">Referencia:</strong> {site.obligationsNote}</span>
+    </p>
+  </div>
+</section>
